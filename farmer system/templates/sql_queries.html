@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Query Results</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+            text-align: center; /* Keep the heading centered */
+        }
+
+        /* Table styling */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left; /* Align text to the left */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Button styling */
+        .back-button {
+            display: inline-block; /* Make it inline-block to fit the content */
+            margin: 20px auto; /* Center the button horizontally */
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer; /* Add a pointer cursor for better UX */
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Center the button container */
+        .button-container {
+            text-align: center; /* Center the button horizontally */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Query Results</h1>
+    <table>
+        <tr>
+            <th>Query</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Maximum Price</td>
+            <td>{{ max_price }}</td>
+        </tr>
+        <tr>
+            <td>Minimum Price</td>
+            <td>{{ min_price }}</td>
+        </tr>
+        <tr>
+            <td>Average Price</td>
+            <td>{{ avg_price }}</td>
+        </tr>
+        <tr>
+            <td>Total Price (Sum)</td>
+            <td>{{ sum_price }}</td>
+        </tr>
+        <tr>
+            <td>Total Products (Count)</td>
+            <td>{{ count_products }}</td>
+        </tr>
+        <tr>
+            <td>Most Expensive Product</td>
+            <td>{{ most_expensive[0] }} (₹{{ most_expensive[1] }})</td>
+        </tr>
+        <tr>
+            <td>Cheapest Product</td>
+            <td>{{ cheapest[0] }} (₹{{ cheapest[1] }})</td>
+        </tr>
+        <tr>
+            <td>Average Age of Farmers</td>
+            <td>{{ avg_age }}</td>
+        </tr>
+        <tr>
+            <td>Total Farmers Registered</td>
+            <td>{{ total_farmers }}</td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>

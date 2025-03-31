@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom SQL Queries</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Styling */
+        h1 {
+            text-align: center;
+            color: #0660df;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        /* Table Styling */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        td {
+            font-size: 0.95em;
+        }
+
+        /* Form Styling */
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom SQL Queries</h1>
+
+    <!-- Query Selection Form -->
+    <form action="/custom_sql_queries" method="POST">
+        <label for="query_type">Select Query:</label>
+        <select id="query_type" name="query_type">
+            <option value="low_income" {% if selected_query == 'low_income' %}selected{% endif %}>Farmers with Age Below 30</option>
+            <option value="high_income" {% if selected_query == 'high_income' %}selected{% endif %}>Farmers with Age Above 50</option>
+            <option value="specific_farming" {% if selected_query == 'specific_farming' %}selected{% endif %}>Farmers with Specific Farming Type</option>
+            <option value="age_between_25_40" {% if selected_query == 'age_between_25_40' %}selected{% endif %}>Farmers with Age Between 25 and 40</option>
+            <option value="gender_distribution" {% if selected_query == 'gender_distribution' %}selected{% endif %}>Gender Distribution of Farmers</option>
+            <option value="recent_registrations" {% if selected_query == 'recent_registrations' %}selected{% endif %}>Farmers Registered in the Last 30 Days</option>
+            <option value="top_5_oldest" {% if selected_query == 'top_5_oldest' %}selected{% endif %}>Top 5 Oldest Farmers</option>
+            <option value="longest_address" {% if selected_query == 'longest_address' %}selected{% endif %}>Farmer with the Longest Address</option>
+            <option value="duplicate_adhar" {% if selected_query == 'duplicate_adhar' %}selected{% endif %}>Farmers with Duplicate Aadhar Numbers</option>
+            <option value="total_farmers" {% if selected_query == 'total_farmers' %}selected{% endif %}>Total Number of Farmers</option>
+            <option value="average_age" {% if selected_query == 'average_age' %}selected{% endif %}>Average Age of Farmers</option>
+        </select>
+        <button type="submit">Run Query</button>
+    </form>
+
+    <!-- Query Results Table -->
+    {% if farmers %}
+    <table>
+        <thead>
+            <tr>
+                <th>Farmer Name</th>
+                <th>Aadhar Number</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Farming Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for farmer in farmers %}
+            <tr>
+                <td>{{ farmer.farmername }}</td>
+                <td>{{ farmer.adharnumber }}</td>
+                <td>{{ farmer.age }}</td>
+                <td>{{ farmer.gender }}</td>
+                <td>{{ farmer.phonenumber }}</td>
+                <td>{{ farmer.address }}</td>
+                <td>{{ farmer.farming }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <footer>
+        &copy; 2025 Farm Management System. All rights reserved.
+    </footer>
+</body>
+</html>
